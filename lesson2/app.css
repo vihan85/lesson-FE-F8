@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family :arial;
+}
+
+#header{
+    height: 46px;
+    width: 100%;
+    background-color: black;
+}
+ #nav li{
+    display: inline-block;
+    line-height: 46px;
+}
+
+#nav li:hover a {
+    background: #ccc;
+    color: white;
+
+}
+
+#nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+
+}
+#nav .subnav li{
+    display:none;
+}
+
+#wrapper
+{}
+
+#silder{
+
+}
+
+#content
+{}
+
+#footer{
+
+}

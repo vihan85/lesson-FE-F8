@@ -1,0 +1,34 @@
+html{
+    width: 800px;
+    font-family: arial;
+}
+.box{
+    color: red;
+}
+#box2{
+    color: black;
+}
+input {
+    color: blue;
+}
+.heading{
+    color: black;
+}
+.box table.result td, .result th {
+    vertical-align: middle;
+}
+table{
+    border-collapse: collapse;
+  width: 100%; 
+  /* rong 100% */
+}
+td, th {
+    border: 1px solid #dddddd;
+    /* duong ke khung */
+    text-align: left;
+    /* can le trai */
+    padding: 8px;
+#name{
+    border: 1px;
+    text-align: middle;
+}
