@@ -1,48 +1,178 @@
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 html{
-    font-family :arial;
+    font-family: arial;
 }
-
 #header{
     height: 46px;
-    width: 100%;
     background-color: black;
+    position: relative;
+    position: fixed;
+    z-index:1;
+    right:0;
+    left:0;
+   
 }
- #nav li{
+
+
+#header #nav >li{
+    padding: 0 24px;
+
+}
+#nav li{
+    position: relative;
     display: inline-block;
     line-height: 46px;
+    
+}
+#nav li:hover,
+#nav >li:hover >a {
+    background-color: #ccc;
+    color: black;
 }
 
-#nav li:hover a {
-    background: #ccc;
-    color: white;
+#nav li >a{
+    color: white; 
 
 }
-
-#nav li a {
-    color: white;
+#nav >li >a{
+   text-transform: uppercase;
+}
+#nav li a{
+  
     text-decoration: none;
-    padding: 12px 24px;
-
+    font-size: 15px;
+}
+#nav .subnav{
+    position: absolute;
+    top:100%;
+    left:0;
+    display: none;
+    background-color: white;
+}
+#nav .subnav a{
+    color: black;
+    font-size: 15px;
+}
+#nav .subnav >li{
+    width: 160px;
+    
 }
 #nav .subnav li{
-    display:none;
+    padding: 0 16px;
 }
-
-#wrapper
-{}
-
-#silder{
+#nav li:hover .subnav{
 
 }
+.subnav li >a{
+    color: black;
+}
 
-#content
-{}
+#nav li:hover .subnav{
+    display: block;
+    box-shadow: 0 0 12px black;
+}
 
+.icon{
+    display: inline-block;
+    font-size: 14px;
+}
+.search-button{
+    position: absolute;
+    top:0;
+    right:0;
+    text-align: center;
+    display: inline-block;
+    color: white;
+    font-size: 16px;
+    padding: 15px 24px;
+}
+.search-button:hover {
+    background-color: rgb(244, 67, 54);
+    cursor: pointer;
+}
+
+#silider{
+    position: relative;
+    padding-top: 50%;
+    background: url(./img/slider-1.jpg) center top /cover no-repeat;
+
+
+}
+#silider #text{
+    position: absolute;
+    bottom: 0;
+    padding: 48px 0;
+    top: 50;
+    left: 50%;
+    color: white;
+    opacity: 0.9;
+    transform: translateX(-50%);
+
+}
+#text .text-slide{
+    text-align: center;
+    font-weight: 400;
+}
+#text .sub-text-slide{
+    padding-top: 35px;
+    font-weight: bolder;
+    font-size: 15px; 
+}
+#about .head-abt{
+    
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 64px;
+}
+.head-abt .slogan-about{
+    text-align: center;
+    color:rgb(126, 122, 122);
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-style: italic;
+
+}
+
+.head-abt .head-about{
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+#about .text{
+    text-align: justify;
+}
+
+
+
+#content{
+    width :800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content .member {
+    display: inline-block;
+}
+
+.member .member-list{
+    float: left;
+    text-align: center;
+    width: 33.33333;
+    padding: 0 50px;
+}
+.member-list .member-img{
+    width: 154px;
+    border-radius: 3px;
+    
+}
+.member .menber-name{
+    padding: 20px;
+}
 #footer{
 
 }
+
