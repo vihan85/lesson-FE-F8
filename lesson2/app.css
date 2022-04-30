@@ -14,6 +14,7 @@ html{
     z-index:1;
     right:0;
     left:0;
+      
    
 }
 
@@ -64,9 +65,8 @@ html{
 #nav .subnav li{
     padding: 0 16px;
 }
-#nav li:hover .subnav{
 
-}
+
 .subnav li >a{
     color: black;
 }
@@ -131,8 +131,8 @@ html{
 .head-abt .slogan-about{
     text-align: center;
     color:rgb(126, 122, 122);
-    padding-top: 35px;
-    padding-bottom: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     font-style: italic;
 
 }
@@ -149,7 +149,7 @@ html{
 
 
 #content{
-    width :800px;
+    width:800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -172,6 +172,140 @@ html{
 .member .menber-name{
     padding: 20px;
 }
+.tour{
+    background: black;
+}
+.tour .head-about{
+    color: white !important;
+    padding-top: 64px;
+    
+}
+    
+.booking .tickets{
+    margin-left: 16px;
+    color: white;
+    padding: 2px 8px;
+    background: #f44336;
+    
+}
+.booking .time-booking{
+    color: #757575;
+    border-bottom: 1px solid rgb(182, 178, 178);
+    padding: 8px 16px;
+    font-size: 17px;
+    list-style: none;
+    
+}
+.booking{
+    background: white;
+}
+.tickets-number{
+    border-radius: 50%;
+    background: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    float: right;
+    color: white;
+
+}
+
+.buy-tickets{
+    padding: 32px 8px;
+    overflow: hidden;
+    background: white;
+}
+.buy-tickets .place{
+
+}
+.buy-tickets .date{
+
+}
+.buy-tickets .buy-text{
+
+}
+.buy-tickets .place-img{
+    width: 247px;
+    height: 194px;
+   
+    padding-left: 8px;
+    padding-right: 8px
+}
+.buy{
+    float: left;
+    width: 33.3333%;
+
+}
+.place, .date, .buy-text{
+    padding: 15px;
+    font-size: 15px;
+    color: black
+
+}
+.date{
+    opacity:0.6;
+}
+.backgroud-tour{
+    background: black;
+}
+.button-buy{
+    padding: 8px 16px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: white;
+    background: black;
+    border-style: none;
+    border: none;
+}
+.button-buy:hover{
+    background : #ccc;
+    color:black;
+    cursor: pointer;
+}
+.footer-content{
+
+}
+.in-contact{
+    position: relative;
+    
+
+}
+.icon{
+    list-style-type: none;
+    
+}
+.icon >li{
+    margin: 15px;
+    font-size: 15px;
+   
+}
+.location{
+    margin-right: 15px;
+    font-size: 25px;
+}
+.fix{
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin: 5px 8px;
+}
+.sub-infomation{
+    
+}
+.infomation{
+    top: 14px;
+    right: -11px;
+    position: absolute;
+}
+.fix-2{
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin: 5px 8px;
+    padding-right: 227px;
+}
+.send{
+    
+}
+
+
 #footer{
 
 }
