@@ -13,12 +13,12 @@ html{
     position: fixed;
     z-index:1;
     right:0;
-    left:0;
-      
-   
+    left:0; 
 }
 
-
+.padding-bottom{
+    padding-bottom: 96px;
+}
 #header #nav >li{
     padding: 0 24px;
 
@@ -29,7 +29,8 @@ html{
     line-height: 46px;
     
 }
-#nav li:hover,
+.send:hover,
+#nav li:hover ,
 #nav >li:hover >a {
     background-color: #ccc;
     color: black;
@@ -141,15 +142,21 @@ html{
     text-align: center;
     font-weight: 400;
     letter-spacing: 4px;
+    
 }
 #about .text{
     text-align: justify;
 }
 
+.fix-width {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 #content{
-    width:800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -265,7 +272,6 @@ html{
 
 }
 .in-contact{
-    position: relative;
     
 
 }
@@ -287,12 +293,13 @@ html{
     border: 1px solid #ccc;
     margin: 5px 8px;
 }
-.sub-infomation{
+.sub-infomation{ 
+    width: 800px;
     
 }
 .infomation{
-    top: 14px;
-    right: -11px;
+    top: 9px;
+    left: 385px;
     position: absolute;
 }
 .fix-2{
@@ -302,11 +309,108 @@ html{
     padding-right: 227px;
 }
 .send{
+    margin: 16px;
+    padding: 9px 16px;
+    background: black;
     
+    text-transform: uppercase;
+    border: none;
+    font-size: 15px;
+    position: absolute;
+    left: 323px;
+    top: 95px;
+
+}
+.send {
+    text-decoration: none;
+    color: white;
+}
+
+.fix-3{
+    width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+.buy .place-img:hover{
+    opacity: 0.6 ;
 }
 
 
 #footer{
 
+}
+.modal{
+    position: fixed;
+    display: none;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+}
+.modal-container{
+    background: white;
+    width: 900px;
+    min-height: 200px;
+    position: relative;
+    max-width: calc(100% - 32px);
+
+}
+.modal-body{
+
+}
+.modal-header {
+    background: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+.modal-heading-icon{
+    margin: 16px;
+}
+.modal-close{
+    position: absolute;
+    right:0px;
+    top:0px;
+    color:#fff;
+    padding:12px;
+    cursor:pointer;
+}
+.modal-body {
+    padding: 16px;
+}
+label.modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+input.modal-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+#buy-stickets {
+    background-color: #009688;
+    border: none;
+    color: #fff;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+}
+button#buy-stickets:hover {
+    opacity: 0.9;
+}
+p.moda-help {
+    padding: 16px;
+    text-align: right;
 }
 
