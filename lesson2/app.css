@@ -5,7 +5,15 @@
 }
 html{
     font-family: arial;
+    scroll-behavior: smooth;
 }
+/* common */
+.row{
+    margin: 0px -8px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
 #header{
     height: 46px;
     background-color: black;
@@ -14,10 +22,9 @@ html{
     z-index:1;
     right:0;
     left:0; 
+    overflow: hidden;
 }
 
-.padding-bottom{
-    padding-bottom: 96px;
 }
 #header #nav >li{
     padding: 0 24px;
@@ -81,15 +88,21 @@ html{
     display: inline-block;
     font-size: 14px;
 }
-.search-button{
+.btn{
     position: absolute;
-    top:0;
+    top:4px;
     right:0;
     text-align: center;
     display: inline-block;
     color: white;
     font-size: 16px;
     padding: 15px 24px;
+}
+.search-button{
+    display:none;
+}
+.menu-btn{
+    display: inline-block;
 }
 .search-button:hover {
     background-color: rgb(244, 67, 54);
@@ -124,10 +137,11 @@ html{
     font-size: 15px; 
 }
 #about .head-abt{
-    
     margin-left: auto;
     margin-right: auto;
-    padding-top: 64px;
+}
+ul#nav>li {
+    padding: 0 24px;
 }
 .head-abt .slogan-about{
     text-align: center;
@@ -146,6 +160,7 @@ html{
 }
 #about .text{
     text-align: justify;
+    line-height: 1.5;
 }
 
 .fix-width {
@@ -168,8 +183,8 @@ html{
 .member .member-list{
     float: left;
     text-align: center;
-    width: 33.33333;
-    padding: 0 50px;
+    width: 33.33333%;
+   
 }
 .member-list .member-img{
     width: 154px;
@@ -184,8 +199,7 @@ html{
 }
 .tour .head-about{
     color: white !important;
-    padding-top: 64px;
-    
+   
 }
     
 .booking .tickets{
@@ -293,9 +307,8 @@ html{
     border: 1px solid #ccc;
     margin: 5px 8px;
 }
-.sub-infomation{ 
-    width: 800px;
-    
+input.fix {
+    float: right;
 }
 .infomation{
     top: 9px;
@@ -336,10 +349,11 @@ html{
 }
 
 
+
 #footer{
 
 }
-.modal{
+.modal {
     position: fixed;
     display: none;
     align-items: center;
@@ -356,7 +370,7 @@ html{
     min-height: 200px;
     position: relative;
     max-width: calc(100% - 32px);
-
+    animation: modalfadein ease 0.5s;
 }
 .modal-body{
 
@@ -413,4 +427,21 @@ p.moda-help {
     padding: 16px;
     text-align: right;
 }
+.open{
+    display: flex;
+}
+p.text {
+    text-align: justify;
+
+@keyframes modalfadein {
+    from { transform: translateY(-100px);
+
+    }
+    to {
+        transform: translateY(0)
+    }
+}
+
+
+
 

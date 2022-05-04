@@ -1,0 +1,6 @@
+@media (max-width: 740px){
+    ul#nav>li{
+        display: block;
+    }
+
+}
