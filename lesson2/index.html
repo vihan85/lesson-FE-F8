@@ -110,10 +110,11 @@
                         
                     </div>            
                  </div>
-            <div class="row">
+            <div class="row width-800">
                 <div id="contact" class="head-abt">
                     <h2 class="head-about">CONTACT</h2>
                     <p class="slogan-about">Fan Drop a note!</p>
+               
                 </div>
                <div class="footer-content">
                 <div class=" fix-3">
@@ -122,66 +123,71 @@
                             <li><i class="location ti-location-pin"></i>Chicago, US</li>
                             <li><i class="location ti-themify-favicon"></i>Phone: +00 151515</li>
                             <li><i class="location ti-comment-alt"></i>Email: mail@mail.com</li>
-                        </ul>  
-                    </ul>  
-                        </ul>  
-                    </ul>  
-                        </ul>  
-                    </ul>  
-                        </ul>  
-                            <div class="infomation padding-bottom ">
-                             <div class="sub-infomation">
-                                <input type="text" class="fix"  placeholder="Name" required>
-                                <input type="text" class="fix"  placeholder="Email" required>
-                                
+                        </ul>
+                            <div class="infomation padding-bottom col-half ">
+                             <div class="sub-infomation ">
+                                <input type="text" class="type-input col-half" required placeholder="Name" >
+                                <input type="text" class="type-input" required placeholder="Email" >
+                                <input type="text" class="type-input width-100" required placeholder="Message">
+                               <div class="btn-send">
+                                   <button class="send" type="submit" >SEND</button>
+                               </div>
                              </div>
-                            <div class="sub-infomation"><input type="text" class="fix-2"  placeholder="Message" required></div>
-                            <a class="send" href="">Send</a>
                             </div>
                        </div>
-                   </div>
+                    </div>
                 </div>
             </div>  
         
         </div>
 
     </div>
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class=" ti-close  "></i>
+            </div>
+            <header class=" modal-header">
+                <i class="modal-heading-icon ti-bag"> </i>
+                Tickets
+            </header>
+
+            <div class="modal-body">
+                <label for="quantity" class="modal-label">
+                    <i class="ti-shopping-cart"></i>
+                    Tickets, $15 per person
+                </label>
+                <input id="quantity" type="text " class="modal-input" placeholder="How many?">
+       
+               
+                    <label for="quatity-send" class="modal-label">
+                        <i class="ti-user"></i>
+                        Send to
+                    </label>
+                    <input id="quatity-send" type="email " class="modal-input" placeholder="Enter email...">
+                    <button id="buy-stickets">
+                        pay <i class="ti-check"></i>
+                    </button>
+            </div>
+            
+            <footer class="modal-footer">
+                <p class="moda-help">Need <a href="">Help?</a> </p>
+            </footer>
+
+        </div>
+
+    </div>
+    <div id="map" ><img src="./img/map.jpg" alt="map"></div>
 
     <div id="footer">
-        <div class="modal js-modal">
-            <div class="modal-container js-modal-container">
-                <div class="modal-close js-modal-close">
-                    <i class=" ti-close  "></i>
-                </div>
-                <header class=" modal-header">
-                    <i class="modal-heading-icon ti-bag"> </i>
-                    Tickets
-                </header>
-
-                <div class="modal-body">
-                    <label for="quantity" class="modal-label">
-                        <i class="ti-shopping-cart"></i>
-                        Tickets, $15 per person
-                    </label>
-                    <input id="quantity" type="text " class="modal-input" placeholder="How many?">
-           
-                   
-                        <label for="quatity-send" class="modal-label">
-                            <i class="ti-user"></i>
-                            Send to
-                        </label>
-                        <input id="quatity-send" type="email " class="modal-input" placeholder="Enter email...">
-                        <button id="buy-stickets">
-                            pay <i class="ti-check"></i>
-                        </button>
-                </div>
-                
-                <footer class="modal-footer">
-                    <p class="moda-help">Need <a href="">Help?</a> </p>
-                </footer>
-
-            </div>
-
+        <div class="band-footer row">
+            <i class="ti-facebook"><a href=""></a></i>
+            <i class="ti-instagram"><a href=""></a></i>
+            <i class="ti-reddit"><a href=""></a></i>
+            <i class="ti-pinterest"><a href=""></a></i>
+            <i class="ti-twitter-alt"><a href=""></a></i>
+            <i class="ti-linkedin"><a href=""></a></i>
+            <p class="text-footer">Powered by <a href="">w3.css</a></p>
         </div>
 
     </div>

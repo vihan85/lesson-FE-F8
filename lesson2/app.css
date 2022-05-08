@@ -13,7 +13,14 @@ html{
     padding-top: 64px;
     padding-bottom: 64px;
 }
-
+.width-100{
+    
+    width: 100%;
+}
+.col-half{
+    float: right;
+    width: 50%;
+}
 #header{
     height: 46px;
     background-color: black;
@@ -25,7 +32,6 @@ html{
     overflow: hidden;
 }
 
-}
 #header #nav >li{
     padding: 0 24px;
 
@@ -265,8 +271,10 @@ ul#nav>li {
 .date{
     opacity:0.6;
 }
-.backgroud-tour{
+.backgroud-tour {
     background: black;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 .button-buy{
     padding: 8px 16px;
@@ -302,53 +310,41 @@ ul#nav>li {
     margin-right: 15px;
     font-size: 25px;
 }
-.fix{
-    padding: 12px;
-    border: 1px solid #ccc;
-    margin: 5px 8px;
-}
 input.fix {
-    float: right;
+   
 }
 .infomation{
-    top: 9px;
-    left: 385px;
-    position: absolute;
-}
-.fix-2{
-    padding: 12px;
-    border: 1px solid #ccc;
-    margin: 5px 8px;
-    padding-right: 227px;
+
 }
 .send{
-    margin: 16px;
+    margin-top: 16px;
     padding: 9px 16px;
     background: black;
-    
     text-transform: uppercase;
     border: none;
     font-size: 15px;
-    position: absolute;
-    left: 323px;
-    top: 95px;
-
-}
-.send {
     text-decoration: none;
     color: white;
+    float: right;
 }
+.col-half{
 
+}
+.type-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.type-input{
+
+}
 .fix-3{
     width: 800px;
     margin: 0 auto;
-    position: relative;
 }
 .buy .place-img:hover{
     opacity: 0.6 ;
 }
-
-
 
 #footer{
 
@@ -432,7 +428,32 @@ p.moda-help {
 }
 p.text {
     text-align: justify;
+}
+.type-input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-top: 8px
+}
+img {
+    width: 100%;
+    filter: grayscale(0.5);
+}
 
+.band-footer{
+    text-align: center;
+}
+.band-footer {
+    color: #484545;
+    text-align: center;
+    font-size: 24px;
+}
+#footer .text-footer{
+    font-size: 15px;
+}
+#footer .text-footer >a{
+    color: #484545;
+}
 @keyframes modalfadein {
     from { transform: translateY(-100px);
 
