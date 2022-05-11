@@ -5,42 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="./app.css">
 </head>
 <body>
-    <!-- creat button -->
-    <div>
-        <button class="btn btn--size-s btn--sucess ">GO TO NEXT APPROVAL</button>
-        <button class="btn btn--size-s btn--warn">OK</button>
-        <button class="btn btn--size-s btn--danger">TRY AGAIN</button>
-    </div>
-    <div>
-        <button class="btn btn--sucess ">GO TO NEXT APPROVAL</button>
-        <button class="btn btn--warn">OK</button>
-        <button class="btn btn--danger">TRY AGAIN</button>
-    </div>
-    <div>
-        <button class="btn btn--size-l btn--sucess btn--disable">GO TO NEXT APPROVAL</button>
-        <button class="btn btn--size-l btn--warn">OK</button>
-        <button class="btn btn--size-l btn--danger">TRY AGAIN</button>
-    </div>
-<!-- success -->
-    <div id="toast">
-        <div class="toast">
-            <div class="toast__icon">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <div class="toast__body">
-                <h3 class="toast__title">Success</h3>
-                <p class="toast__msg">Anyone with access can view your invited visistor</p>
-            </div>
-            <div class="toast__close">
-                <i class="fa-solid fa-xmark"></i>
-            </div>    
-        </div>
-
-    </div>
-<script src="./app.js"></script>        
+    <div id="toast"></div>
+<div>
+  <div onclick="showSuccessToast();" class="btn btn--success">Show success toast</div>
+  <div onclick="showErrorToast();" class="btn btn--danger">Show error toast</div>
+</div>
+<script src="./app.js"></script>
 </body>
 </html>
