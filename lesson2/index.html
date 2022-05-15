@@ -4,43 +4,195 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>w3.Band</title>
     <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="./font-icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./responsive.css">
 
+    
 </head>
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <ul id="nav">
-                <li><a href="">About</a></li>
-                <li><a href="">Tour</a></li>
-                <li><a href="">Contact</a></li>
-                <li>
-                    <a href="">More</a>
-                    <ul class="subnav">
-                        <li><a href="">Merchandise</a></li>
-                        <li><a href="">Extras</a></li>
-                        <li><a href="">Media</a></li>
-                    </ul>
-                </li>
-    
-            </ul>
-
+    <div id="header">
+        <!--  star nav -->
+        <ul id="nav">
+            <li><a href="">Home</a></li>
+            <li><a href="#band">Band</a></li>
+            <li><a href="#tour-croll">Tour</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+                <a href="#">
+                    More <i class="icon ti-angle-down"></i>
+                </a>
+                <ul class="subnav">
+                    <li><a href="">Merchandise</a></li>
+                    <li><a href="">Extras</a></li>
+                    <li><a href="">Media</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- end nav -->
+        <!-- star button -->
+        <div class="btn search-button ti-search">
         </div>
+        <div id="btn-mobile-menu" class=" btn menu-btn"><i class="ti-menu"></i></div>
+        <!-- endbutton -->
 
-        <div id="silder">
+    </div>
 
-        </div>
-
-        <div id="content">
-
-        </div>
-
-        <div id="footer">
-
+    <div id="silider">
+        <div  id="text">
+            <h2 class="text-slide">Los Angeles</h2>
+             <p class="sub-text-slide">The atmosphere in New York is lorem ipsum.</p>
         </div>
     </div>
-    
-    <script src="./app.js"></script>
+    <div id="content">
+        <div id="band" id="about" class="fix-width row">
+            <div class="head-abt">
+                <h2 class="head-about">THE BAND</h2>
+                <p class="slogan-about">We love music</p>
+                <P class="text">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</P>
+            </div>
+            <div class="member fix-width">
+                <div class="member-list">
+                    <p class="menber-name">Name</p>
+                    <img src="./img/bandmember.jpg" alt="" class="member-img">
+                </div>
+
+                <div class="member-list">
+                    <p class="menber-name">Name</p>
+                    <img src="./img/bandmember.jpg" alt="" class="member-img">
+                </div>
+
+                <div class="member-list">
+                    <p class="menber-name">Name</p>
+                    <img src="./img/bandmember.jpg" alt="" class="member-img">
+                </div>
+            </div>
+        </div>
+
+        <div id="tour-croll" class="tour-section">
+            <div class="head-abt">
+                 <div class="backgroud-tour row">
+
+                    <div id="tour" class="tour fix-width">
+                        <h2 class="head-about">TOUR</h2>
+                        <p class="slogan-about">Remember to book your tickets!</p>
+                        <ul class="booking"> 
+                            <li class="time-booking">September <span class="tickets">Sold out</span></li>
+                            <li class="time-booking">October <span class="tickets">Sold out</span></li>
+                            <li class="time-booking">November <span class="tickets-number">3</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="buy-tickets fix-width">
+                        <div class="buy"> 
+                            <img src="./img/newyork.jpg" alt="" class="place-img">
+                            <b class="place">New York</b>
+                            <p class="date">Fri 27 Nov 2016</p>
+                            <p class="buy-text">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                             <button class="button-buy js-buy-ticket">Buy Tickets</button>
+                        </div>
+
+                        <div class="buy"> 
+                            <img src="./img/paris.jpg" alt="" class="place-img">
+                            <b class="place">Paris</b>
+                            <p class="date">Sat 28 Nov 2016</p>
+                            <p class="buy-text">Praesent tincidunt sed tellus ut rutrum sed vitae justo</p>
+                             <button class="button-buy js-buy-ticket">Buy Tickets</button>
+                        </div>
+                        <div class="buy"> 
+                            <img src="./img/sanfran.jpg" alt="" class="place-img">
+                            <b class="place">San Francisco</b>
+                            <p class="date">Sun 29 Nov 2016</p>
+                            <p class="buy-text">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
+                             <button class="button-buy js-buy-ticket">Buy Tickets</button>
+                        </div>
+                        
+                    </div>            
+                 </div>
+            <div class="row width-800">
+                <div id="contact" class="head-abt">
+                    <h2 class="head-about">CONTACT</h2>
+                    <p class="slogan-about">Fan Drop a note!</p>
+               
+                </div>
+               <div class="footer-content">
+                <div class=" fix-3">
+                    <div class="in-contact">
+                        <ul class="icon">
+                            <li><i class="location ti-location-pin"></i>Chicago, US</li>
+                            <li><i class="location ti-themify-favicon"></i>Phone: +00 151515</li>
+                            <li><i class="location ti-comment-alt"></i>Email: mail@mail.com</li>
+                        </ul>
+                            <div class="infomation padding-bottom col-half ">
+                             <div class="sub-infomation ">
+                                <input type="text" class="type-input col-half" required placeholder="Name" >
+                                <input type="text" class="type-input" required placeholder="Email" >
+                                <input type="text" class="type-input width-100" required placeholder="Message">
+                               <div class="btn-send">
+                                   <button class="send" type="submit" >SEND</button>
+                               </div>
+                             </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>  
+        
+        </div>
+
+    </div>
+    <div class="modal js-modal">
+        <div class="modal-container js-modal-container">
+            <div class="modal-close js-modal-close">
+                <i class=" ti-close  "></i>
+            </div>
+            <header class=" modal-header">
+                <i class="modal-heading-icon ti-bag"> </i>
+                Tickets
+            </header>
+
+            <div class="modal-body">
+                <label for="quantity" class="modal-label">
+                    <i class="ti-shopping-cart"></i>
+                    Tickets, $15 per person
+                </label>
+                <input id="quantity" type="text " class="modal-input" placeholder="How many?">
+       
+               
+                    <label for="quatity-send" class="modal-label">
+                        <i class="ti-user"></i>
+                        Send to
+                    </label>
+                    <input id="quatity-send" type="email " class="modal-input" placeholder="Enter email...">
+                    <button id="buy-stickets">
+                        pay <i class="ti-check"></i>
+                    </button>
+            </div>
+            
+            <footer class="modal-footer">
+                <p class="moda-help">Need <a href="">Help?</a> </p>
+            </footer>
+
+        </div>
+
+    </div>
+    <div id="map" ><img src="./img/map.jpg" alt="map"></div>
+
+    <div id="footer">
+        <div class="band-footer row">
+            <i class="ti-facebook"><a href=""></a></i>
+            <i class="ti-instagram"><a href=""></a></i>
+            <i class="ti-reddit"><a href=""></a></i>
+            <i class="ti-pinterest"><a href=""></a></i>
+            <i class="ti-twitter-alt"><a href=""></a></i>
+            <i class="ti-linkedin"><a href=""></a></i>
+            <p class="text-footer">Powered by <a href="">w3.css</a></p>
+        </div>
+
+    </div>
+    <script src="./app.js">  </script>
+
 </body>
+
 </html>
