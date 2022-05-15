@@ -1,0 +1,44 @@
+@media (max-width: 740px){
+    ul#nav>li{
+        display: block;
+    }
+    
+    .infomation{
+        position: relative;
+    }
+
+    .buy,
+    .infomation,
+    .member .member-list,
+    .buy-tickets .place-img,
+    .fix-width,
+    .type-input,
+    .fix-3{
+        width:100%;
+    }
+   
+    #silider #text{
+        display: none;
+    }
+    
+    #content{
+        padding: 0 16px;
+    }
+    .member-list .member-img{
+        width: 230px;
+        height: 230px;
+
+    }
+    .infomation {
+        position: relative;
+        padding: 8px;
+    }
+    .type-input {
+        padding:16px;
+    }
+    .send{
+        width:100%;
+        padding: 16px;
+    }
+
+}
