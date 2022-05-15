@@ -5,6 +5,21 @@
 }
 html{
     font-family: arial;
+    scroll-behavior: smooth;
+}
+/* common */
+.row{
+    margin: 0px -8px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+.width-100{
+    
+    width: 100%;
+}
+.col-half{
+    float: right;
+    width: 50%;
 }
 #header{
     height: 46px;
@@ -13,10 +28,9 @@ html{
     position: fixed;
     z-index:1;
     right:0;
-    left:0;
-   
+    left:0; 
+    overflow: hidden;
 }
-
 
 #header #nav >li{
     padding: 0 24px;
@@ -28,7 +42,8 @@ html{
     line-height: 46px;
     
 }
-#nav li:hover,
+.send:hover,
+#nav li:hover ,
 #nav >li:hover >a {
     background-color: #ccc;
     color: black;
@@ -64,9 +79,8 @@ html{
 #nav .subnav li{
     padding: 0 16px;
 }
-#nav li:hover .subnav{
 
-}
+
 .subnav li >a{
     color: black;
 }
@@ -80,15 +94,21 @@ html{
     display: inline-block;
     font-size: 14px;
 }
-.search-button{
+.btn{
     position: absolute;
-    top:0;
+    top:4px;
     right:0;
     text-align: center;
     display: inline-block;
     color: white;
     font-size: 16px;
     padding: 15px 24px;
+}
+.search-button{
+    display:none;
+}
+.menu-btn{
+    display: inline-block;
 }
 .search-button:hover {
     background-color: rgb(244, 67, 54);
@@ -123,16 +143,17 @@ html{
     font-size: 15px; 
 }
 #about .head-abt{
-    
     margin-left: auto;
     margin-right: auto;
-    padding-top: 64px;
+}
+ul#nav>li {
+    padding: 0 24px;
 }
 .head-abt .slogan-about{
     text-align: center;
     color:rgb(126, 122, 122);
-    padding-top: 35px;
-    padding-bottom: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     font-style: italic;
 
 }
@@ -141,15 +162,22 @@ html{
     text-align: center;
     font-weight: 400;
     letter-spacing: 4px;
+    
 }
 #about .text{
     text-align: justify;
+    line-height: 1.5;
+}
+
+.fix-width {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
 
 #content{
-    width :800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -161,8 +189,8 @@ html{
 .member .member-list{
     float: left;
     text-align: center;
-    width: 33.33333;
-    padding: 0 50px;
+    width: 33.33333%;
+   
 }
 .member-list .member-img{
     width: 154px;
@@ -172,7 +200,269 @@ html{
 .member .menber-name{
     padding: 20px;
 }
+.tour{
+    background: black;
+}
+.tour .head-about{
+    color: white !important;
+   
+}
+    
+.booking .tickets{
+    margin-left: 16px;
+    color: white;
+    padding: 2px 8px;
+    background: #f44336;
+    
+}
+.booking .time-booking{
+    color: #757575;
+    border-bottom: 1px solid rgb(182, 178, 178);
+    padding: 8px 16px;
+    font-size: 17px;
+    list-style: none;
+    
+}
+.booking{
+    background: white;
+}
+.tickets-number{
+    border-radius: 50%;
+    background: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    float: right;
+    color: white;
+
+}
+
+.buy-tickets{
+    padding: 32px 8px;
+    overflow: hidden;
+    background: white;
+}
+.buy-tickets .place{
+
+}
+.buy-tickets .date{
+
+}
+.buy-tickets .buy-text{
+
+}
+.buy-tickets .place-img{
+    width: 247px;
+    height: 194px;
+   
+    padding-left: 8px;
+    padding-right: 8px
+}
+.buy{
+    float: left;
+    width: 33.3333%;
+
+}
+.place, .date, .buy-text{
+    padding: 15px;
+    font-size: 15px;
+    color: black
+
+}
+.date{
+    opacity:0.6;
+}
+.backgroud-tour {
+    background: black;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.button-buy{
+    padding: 8px 16px;
+    margin-left: 15px;
+    font-size: 15px;
+    color: white;
+    background: black;
+    border-style: none;
+    border: none;
+}
+.button-buy:hover{
+    background : #ccc;
+    color:black;
+    cursor: pointer;
+}
+.footer-content{
+
+}
+.in-contact{
+    
+
+}
+.icon{
+    list-style-type: none;
+    
+}
+.icon >li{
+    margin: 15px;
+    font-size: 15px;
+   
+}
+.location{
+    margin-right: 15px;
+    font-size: 25px;
+}
+input.fix {
+   
+}
+.infomation{
+
+}
+.send{
+    margin-top: 16px;
+    padding: 9px 16px;
+    background: black;
+    text-transform: uppercase;
+    border: none;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    float: right;
+}
+.col-half{
+
+}
+.type-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.type-input{
+
+}
+.fix-3{
+    width: 800px;
+    margin: 0 auto;
+}
+.buy .place-img:hover{
+    opacity: 0.6 ;
+}
+
 #footer{
 
 }
+.modal {
+    position: fixed;
+    display: none;
+    align-items: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+}
+.modal-container{
+    background: white;
+    width: 900px;
+    min-height: 200px;
+    position: relative;
+    max-width: calc(100% - 32px);
+    animation: modalfadein ease 0.5s;
+}
+.modal-body{
+
+}
+.modal-header {
+    background: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+.modal-heading-icon{
+    margin: 16px;
+}
+.modal-close{
+    position: absolute;
+    right:0px;
+    top:0px;
+    color:#fff;
+    padding:12px;
+    cursor:pointer;
+}
+.modal-body {
+    padding: 16px;
+}
+label.modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+input.modal-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+#buy-stickets {
+    background-color: #009688;
+    border: none;
+    color: #fff;
+    width: 100%;
+    text-transform: uppercase;
+    padding: 18px;
+    cursor: pointer;
+}
+button#buy-stickets:hover {
+    opacity: 0.9;
+}
+p.moda-help {
+    padding: 16px;
+    text-align: right;
+}
+.open{
+    display: flex;
+}
+p.text {
+    text-align: justify;
+}
+.type-input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-top: 8px
+}
+img {
+    width: 100%;
+    filter: grayscale(0.5);
+}
+
+.band-footer{
+    text-align: center;
+}
+.band-footer {
+    color: #484545;
+    text-align: center;
+    font-size: 24px;
+}
+#footer .text-footer{
+    font-size: 15px;
+}
+#footer .text-footer >a{
+    color: #484545;
+}
+@keyframes modalfadein {
+    from { transform: translateY(-100px);
+
+    }
+    to {
+        transform: translateY(0)
+    }
+}
+
+
+
 
