@@ -1,0 +1,19 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "JSON server",
+      "descripttion": "Tham gia nhóm Học lập trình tại F8 trên Facebook để cùng nhau trao đổi trong quá trình học tập ❤️"
+    },
+    {
+      "name": "HTML, CSS từ Zero đến Hero",
+      "description": "Trong khóa này chúng ta sẽ cùng nhau xây dựng giao diện 2 trang web là The Band & Shopee.",
+      "id": 2
+    },
+    {
+      "name": "Comments trong HTML",
+      "description": "Để có cái nhìn tổng quan về ngành IT - Lập trình web các bạn nên xem các videos tại khóa này trước nhé.",
+      "id": 3
+    }
+  ]
+}
