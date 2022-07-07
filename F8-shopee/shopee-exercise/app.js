@@ -40,3 +40,7 @@ function outModal(){
 //     history[0].classList.remove('js-show-history')
 // }
 // main[0].addEventListener('click', closeHistory)
+
+
+
+
