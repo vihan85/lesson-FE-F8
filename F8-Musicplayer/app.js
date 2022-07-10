@@ -1,3 +1,4 @@
+'use strict'
 /** các bước xây dựng JS
  * 1. render song
  * 2. Scroll top
@@ -81,7 +82,6 @@ const app = {
     // 2 load bài hát đầu tiên truyền link vào tag src
     // click vào nút play thì phát nhạc
     loadingFirstSong: function() {
-    
         nameTitle.innerText = this.songs[0].name
         cdThumb.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
         audio.innerHTML = `<source src=${this.songs[0].path} type="audio/mpeg">`
@@ -136,10 +136,9 @@ const app = {
         // render nó vào thẻ audio
         // bắt sự kiện lên nút play để phát nhạc
         const song = $$('.song');
-        for (i = 0; i < song.length; i++) {
+        for (let i = 0; i < song.length; i++) {
             var that = this;
             song[i].addEventListener('click', function () {
-                console.log(song)
                 song.forEach(itemSong => {
                     itemSong.removeAttribute('data-active')
                 });
@@ -157,15 +156,31 @@ const app = {
                 that.musicPlay(audio, duration);
             });
         }
+        var btnNext = $('.btn-next');
+        btnNext.onclick = function() {
+            for (let i = 0; i < song.length; i++) {
+                var currentSong = song[i];
+                if(currentSong.getAttribute('data-active') == 'true') {
+                    var nextSong = song[i + 1];
+                    currentSong.removeAttribute('data-active');
+                    nextSong.setAttribute('data-active','true');
+                    var path = nextSong.dataset.url;
+                    audio.innerHTML = `<source src=${path} type="audio/mpeg">`
+                    audio.load();
+                    audio.play();
+                    break;
+                }
+            }
+        }
     },
-    
+    // them key cho bai hat dau tien
+    // kiem tra the chua data neu laf true thi lay ra bai hat 
     // gan co xac bai hat hien tai
     // event click next 
     // loop .song de xac dinh bai hat hien tai đang hat
     // lay bai hat tiep theo
 
     musicPlay: function(audio, duration) {
-        console.log('test')
         audio.play();
         var fullTime = audio.duration ? audio.duration : duration;
         var round = (fullTime * 360) / 5;
