@@ -76,8 +76,12 @@
     background-color: #333;
     background-size: cover;
     margin: auto;
+    animation: rotate linear;
+    animation-duration: 5s;
   }
-  
+  @keyframes rotate {
+    50% {transform: rotate(var(--change));}
+  }
   /* CONTROL */
   .control {
     display: flex;
@@ -85,7 +89,9 @@
     justify-content: space-around;
     padding: 18px 0 8px 0;
   }
-  
+  .stop-animation{
+    animation-play-state: paused
+  }
   .control .btn {
     color: #666;
     padding: 18px;
