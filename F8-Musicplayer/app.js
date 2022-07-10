@@ -54,36 +54,6 @@ const app = {
             singer: 'Binz',
             path: './asset/music/song.mp3',
             img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
-        },
-        {
-            name: 'OK',
-            singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
-        },
-        {
-            name: 'OK',
-            singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
-        },
-        {
-            name: 'OK',
-            singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
-        },
-        {
-            name: 'OK',
-            singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
-        },
-        {
-            name: 'OK',
-            singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
         }
     ],
     render: function() {
@@ -111,6 +81,7 @@ const app = {
     // 2 load bài hát đầu tiên truyền link vào tag src
     // click vào nút play thì phát nhạc
     loadingFirstSong: function() {
+    
         nameTitle.innerText = this.songs[0].name
         cdThumb.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
         audio.innerHTML = `<source src=${this.songs[0].path} type="audio/mpeg">`
@@ -168,24 +139,33 @@ const app = {
         for (i = 0; i < song.length; i++) {
             var that = this;
             song[i].addEventListener('click', function () {
+                console.log(song)
+                song.forEach(itemSong => {
+                    itemSong.removeAttribute('data-active')
+                });
                 var name = this.querySelector('.title').innerText;
                 var path = this.dataset.url;
                 var imgurl = this.querySelector('.thumb').dataset.img;
                 var nameTitle = $('.name-title');
-                var img = $('.cd-thumb');
                 var audio =$('#audio');
                 nameTitle.innerText = name;
                 cdThumb.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')';
                 audio.innerHTML = `<source src=${path} type="audio/mpeg">`;
                 var duration = audio.duration;
+                this.setAttribute('data-active','true')
                 audio.load();
                 that.musicPlay(audio, duration);
             });
         }
-        
     },
+    
+    // gan co xac bai hat hien tai
+    // event click next 
+    // loop .song de xac dinh bai hat hien tai đang hat
+    // lay bai hat tiep theo
 
     musicPlay: function(audio, duration) {
+        console.log('test')
         audio.play();
         var fullTime = audio.duration ? audio.duration : duration;
         var round = (fullTime * 360) / 5;
