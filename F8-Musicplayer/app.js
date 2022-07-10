@@ -16,7 +16,8 @@ const $$ = document.querySelectorAll.bind(document);
 var nameTitle = $('.name-title');
 var img = $('.cd-thumb');
 var audio =$('#audio');
-
+var btnPlay = $('.btn-toggle-play');
+var btnPlayer = $('.player')
 // danh sách bài hát
 
 
@@ -150,6 +151,7 @@ const app = {
         //      };
         //      lastScrollTop = st <= 0 ? 0 : st; 
         // }
+
         var cd = $('.cd');
         var cdWidth = cd.offsetWidth
         document.onscroll = function () {
@@ -164,6 +166,7 @@ const app = {
         // bắt sự kiện lên nút play để phát nhạc
         const song = $$('.song');
         for (i = 0; i < song.length; i++) {
+            var that = this;
             song[i].addEventListener('click', function () {
                 var name = this.querySelector('.title').innerText;
                 var path = this.dataset.url;
@@ -172,17 +175,47 @@ const app = {
                 var img = $('.cd-thumb');
                 var audio =$('#audio');
                 nameTitle.innerText = name;
-                img.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')'
-                audio.innerHTML = `<source src=${path} type="audio/mpeg">`
+                img.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')';
+                audio.innerHTML = `<source src=${path} type="audio/mpeg">`;
+                var duration = audio.duration;
                 audio.load();
-                audio.play();
+                that.musicPlay(audio, duration);
             });
         }
         
     },
+
+    musicPlay: function(audio, duration) {
+        audio.play();
+        console.log(audio.duration);
+        var fullTime = audio.duration ? audio.duration : duration;
+        var rotate = $('.cd-thumb');
+        var round = (fullTime * 360) / 5;
+        rotate.classList.remove('stop-animation');
+        rotate.style.animationDuration = fullTime + "s";
+        rotate.style.setProperty('--change',  round + "deg");
+        btnPlayer.classList.add('playing');
+    },
+    musicPause: function() {
+        audio.pause();
+        var rotate = $('.cd-thumb');
+        rotate.classList.add('stop-animation')
+        btnPlayer.classList.remove('playing');
+    },
+    clickBtnPlay: function() {
+        var that = this;
+        btnPlay.addEventListener('click', function() {
+            if(audio.paused) {
+                console.log(audio.duration);
+                that.musicPlay(audio);
+            } else {
+                that.musicPause(audio);
+            }   
+        });
+    },
     rotate : function() {
-        var btnPlay = $('.btn-toggle-play');
         btnPlay.onclick = function () {
+            btnPlayer.classList.toggle('playing')
             var audio = $('#audio');
             if(audio.paused) {
                 // rotate
@@ -193,22 +226,19 @@ const app = {
                 rotate.classList.remove('stop-animation')
                 rotate.style.animationDuration = fullTime + "s"
                 rotate.style.setProperty('--change',  round + "deg");
-
             } else {
                 audio.pause();
                 var rotate = $('.cd-thumb');
                 rotate.classList.add('stop-animation')
             }
         }
-    
-
     },
     
     start: function() {
         this.render();
         this.loadingFirstSong();
         this.handleEvent();
-        this.rotate()
+        this.clickBtnPlay();
     }
 };
 app.start()
