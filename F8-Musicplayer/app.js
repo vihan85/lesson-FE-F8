@@ -13,6 +13,9 @@
 // bind() dùng để liên kết $('.class') = document.quẻyselecttor(".class")
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+var nameTitle = $('.name-title');
+var img = $('.cd-thumb');
+var audio =$('#audio');
 
 // danh sách bài hát
 
@@ -22,15 +25,15 @@ const $$ = document.querySelectorAll.bind(document);
 const app = {
     songs: [
         {
-            name: 'ai',
+            name: 'shay nang',
             singer: 'Vicetone',
             path: './asset/music/Shay-Nanggg-AMEE-Obito.mp3',
             img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0zANPoWHH636U0D4a6WyH5IRjBGMUjwh9yA&usqp=CAU'
         },
         {
-            name: 'vì anh vì ai',
+            name: 'xin mua roi',
             singer: 'Đông Nhi',
-            path: './asset/music/song.mp3',
+            path: './asset/music/Xin-Mua-Roi-Nhanh-Trung-Quan-Idol-Hoang-Rob.mp3',
             img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
         },
         {
@@ -86,8 +89,8 @@ const app = {
         let songBlock = $('.playlist')
         let html = this.songs.map(function (song) {
             return `
-            <div class="song" data-url=${song.name}>
-                <div class="thumb" style="background-image: url(${song.img})">
+            <div class="song" data-url=${song.path}>
+                <div class="thumb" data-img=${song.img} style="background-image: url(${song.img})">
                 </div>
                 <div class="body">
                     <h3 class="title">${song.name}</h3>
@@ -107,9 +110,6 @@ const app = {
     // 2 load bài hát đầu tiên truyền link vào tag src
     // click vào nút play thì phát nhạc
     loadingFirstSong: function() {
-        var nameTitle = $('.name-title');
-        var img = $('.cd-thumb');
-        var audio =$('#audio');
         nameTitle.innerText = this.songs[0].name
         img.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
         audio.innerHTML = `<source src=${this.songs[0].path} type="audio/mpeg">`
@@ -157,17 +157,7 @@ const app = {
             const newCdWidth = cdWidth - scrollTop
             cd.style.width = newCdWidth + "px"
         }
-        // play
-        var btnPlay = $('.btn-toggle-play');
-        var audio = $('#audio');
-        btnPlay.onclick = function () {
-            if(audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
-        }
-
+        
         // next
         // bắt sự kiện lên bài hát => lấy ra index
         // render nó vào thẻ audio
@@ -175,18 +165,50 @@ const app = {
         const song = $$('.song');
         for (i = 0; i < song.length; i++) {
             song[i].addEventListener('click', function () {
-                console.log(this);
-
-                console.log(this);
+                var name = this.querySelector('.title').innerText;
+                var path = this.dataset.url;
+                var imgurl = this.querySelector('.thumb').dataset.img;
+                var nameTitle = $('.name-title');
+                var img = $('.cd-thumb');
+                var audio =$('#audio');
+                nameTitle.innerText = name;
+                img.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')'
+                audio.innerHTML = `<source src=${path} type="audio/mpeg">`
+                audio.load();
+                audio.play();
             });
         }
+        
+    },
+    rotate : function() {
+        var btnPlay = $('.btn-toggle-play');
+        btnPlay.onclick = function () {
+            var audio = $('#audio');
+            if(audio.paused) {
+                // rotate
+                audio.play();
+                var fullTime = audio.duration;
+                var rotate = $('.cd-thumb')
+                var round = (fullTime * 360) / 5
+                rotate.classList.remove('stop-animation')
+                rotate.style.animationDuration = fullTime + "s"
+                rotate.style.setProperty('--change',  round + "deg");
+
+            } else {
+                audio.pause();
+                var rotate = $('.cd-thumb');
+                rotate.classList.add('stop-animation')
+            }
+        }
+    
+
     },
     
     start: function() {
         this.render();
         this.loadingFirstSong();
         this.handleEvent();
-        
+        this.rotate()
     }
 };
 app.start()
