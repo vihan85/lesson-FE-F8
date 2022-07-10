@@ -14,10 +14,10 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 var nameTitle = $('.name-title');
-var img = $('.cd-thumb');
 var audio =$('#audio');
 var btnPlay = $('.btn-toggle-play');
-var btnPlayer = $('.player')
+var btnPlayer = $('.player');
+var cdThumb = $('.cd-thumb');
 // danh sách bài hát
 
 
@@ -112,7 +112,7 @@ const app = {
     // click vào nút play thì phát nhạc
     loadingFirstSong: function() {
         nameTitle.innerText = this.songs[0].name
-        img.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
+        cdThumb.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
         audio.innerHTML = `<source src=${this.songs[0].path} type="audio/mpeg">`
     },
 
@@ -175,7 +175,7 @@ const app = {
                 var img = $('.cd-thumb');
                 var audio =$('#audio');
                 nameTitle.innerText = name;
-                img.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')';
+                cdThumb.style.backgroundImage = 'url' + '(' + `${imgurl}` + ')';
                 audio.innerHTML = `<source src=${path} type="audio/mpeg">`;
                 var duration = audio.duration;
                 audio.load();
@@ -187,51 +187,32 @@ const app = {
 
     musicPlay: function(audio, duration) {
         audio.play();
-        console.log(audio.duration);
         var fullTime = audio.duration ? audio.duration : duration;
-        var rotate = $('.cd-thumb');
         var round = (fullTime * 360) / 5;
-        rotate.classList.remove('stop-animation');
-        rotate.style.animationDuration = fullTime + "s";
-        rotate.style.setProperty('--change',  round + "deg");
-        btnPlayer.classList.add('playing');
+        cdThumb.classList.remove('stop-animation');
+        cdThumb.style.animationDuration = fullTime + "s";
+        cdThumb.style.setProperty('--change',  round + "deg");
+
+        if (!btnPlayer.classList.contains('playing')) {
+            btnPlayer.classList.add('playing');
+        }
     },
+
     musicPause: function() {
         audio.pause();
-        var rotate = $('.cd-thumb');
-        rotate.classList.add('stop-animation')
+        cdThumb.classList.add('stop-animation')
         btnPlayer.classList.remove('playing');
     },
+
     clickBtnPlay: function() {
         var that = this;
         btnPlay.addEventListener('click', function() {
             if(audio.paused) {
-                console.log(audio.duration);
                 that.musicPlay(audio);
             } else {
                 that.musicPause(audio);
             }   
         });
-    },
-    rotate : function() {
-        btnPlay.onclick = function () {
-            btnPlayer.classList.toggle('playing')
-            var audio = $('#audio');
-            if(audio.paused) {
-                // rotate
-                audio.play();
-                var fullTime = audio.duration;
-                var rotate = $('.cd-thumb')
-                var round = (fullTime * 360) / 5
-                rotate.classList.remove('stop-animation')
-                rotate.style.animationDuration = fullTime + "s"
-                rotate.style.setProperty('--change',  round + "deg");
-            } else {
-                audio.pause();
-                var rotate = $('.cd-thumb');
-                rotate.classList.add('stop-animation')
-            }
-        }
     },
     
     start: function() {
