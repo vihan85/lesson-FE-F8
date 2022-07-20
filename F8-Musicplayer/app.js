@@ -19,6 +19,7 @@ var audio =$('#audio');
 var btnPlay = $('.btn-toggle-play');
 var btnPlayer = $('.player');
 var cdThumb = $('.cd-thumb');
+var initSong = true;
 // danh sách bài hát
 
 
@@ -34,35 +35,47 @@ const app = {
         },
         {
             name: 'xin mua roi',
-            singer: 'Đông Nhi',
+            singer: 'Trung Quan',
             path: './asset/music/Xin-Mua-Roi-Nhanh-Trung-Quan-Idol-Hoang-Rob.mp3',
             img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
         },
         {
-            name: 'OK',
+            name: 'Dot Chay',
             singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
+            path: './asset/music/Dot-Chay-Linh-Cao.mp3',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0zANPoWHH636U0D4a6WyH5IRjBGMUjwh9yA&usqp=CAU'
         },
         {
             name: 'Bất ngờ',
             singer: 'Vicetone',
-            path: './asset/music/song.mp3',
+            path: './asset/music/Con-Gi-Giua-Chung-Ta-Miu-Le.mp3',
             img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
         },
         {
             name: 'OK',
             singer: 'Binz',
-            path: './asset/music/song.mp3',
-            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
+            path: './asset/music/Tu-Ngay-Mai-Em-Se-Khac-Huong-Giang.mp3',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0zANPoWHH636U0D4a6WyH5IRjBGMUjwh9yA&usqp=CAU'
+
         }
-    ],
+    ], 
+    curentSong : 0,
+    getCurentSong: function() {
+        return this.curentSong
+    },
+    setCurentSong: function(value) {
+        var songsLenght = this.songs.length
+        if(value >= songsLenght | value < 0) {
+            value = 0
+        }
+        return this.curentSong = value
+    },
     render: function() {
         let songBlock = $('.playlist')
-        let html = this.songs.map(function (song) {
+        let html = this.songs.map(function (song ,index) {
             return `
             <div class="song" data-url=${song.path}>
-                <div class="thumb" data-img=${song.img} style="background-image: url(${song.img})">
+                <div class="thumb" data-index=${index}  data-img=${song.img} style="background-image: url(${song.img})">
                 </div>
                 <div class="body">
                     <h3 class="title">${song.name}</h3>
@@ -81,10 +94,22 @@ const app = {
     // 1 thay đổi tên và ảnh
     // 2 load bài hát đầu tiên truyền link vào tag src
     // click vào nút play thì phát nhạc
-    loadingFirstSong: function() {
-        nameTitle.innerText = this.songs[0].name
-        cdThumb.style.backgroundImage = 'url' + '(' + `${this.songs[0].img}` + ')'
-        audio.innerHTML = `<source src=${this.songs[0].path} type="audio/mpeg">`
+    
+    loadingSong: function() {
+        let curentSong = this.getCurentSong()
+        nameTitle.innerText = this.songs[curentSong].name
+        cdThumb.style.backgroundImage = 'url' + '(' + `${this.songs[curentSong].img}` + ')'
+         audio.innerHTML = `<source src=${this.songs[curentSong].path} type="audio/mpeg">`
+        // audio.src = this.songs[curentSong].path;
+        if (initSong !== true) {
+            audio.load()
+            // var duration = audio.duration
+            // console.log(duration);
+            audio.addEventListener('loadedmetadata', function(e) {
+                // console.log(e);
+            });
+            this.musicPlay(audio)
+        }
     },
 
 //  hàm xử lý sự kiện 
@@ -130,7 +155,7 @@ const app = {
             const newCdWidth = cdWidth - scrollTop
             cd.style.width = newCdWidth + "px"
         }
-        
+
         // next
         // bắt sự kiện lên bài hát => lấy ra index
         // render nó vào thẻ audio
@@ -157,20 +182,43 @@ const app = {
             });
         }
         var btnNext = $('.btn-next');
-        btnNext.onclick = function() {
-            for (let i = 0; i < song.length; i++) {
-                var currentSong = song[i];
-                if(currentSong.getAttribute('data-active') == 'true') {
-                    var nextSong = song[i + 1];
-                    currentSong.removeAttribute('data-active');
-                    nextSong.setAttribute('data-active','true');
-                    var path = nextSong.dataset.url;
-                    audio.innerHTML = `<source src=${path} type="audio/mpeg">`
-                    audio.load();
-                    audio.play();
-                    break;
-                }
-            }
+        btnNext.onclick = () => {
+            var curentSong = this.getCurentSong();
+            var index = curentSong + 1
+            this.setCurentSong(index)
+            var newSong = this.setCurentSong(index)
+            this.loadingSong(newSong)
+            // for (let i = 0; i < song.length; i++) {
+            //     var currentSong = song[i];
+            //     if(currentSong.getAttribute('data-active') == 'true') {
+            //         var nextSong = song[i + 1];
+            //         currentSong.removeAttribute('data-active');
+            //         nextSong.setAttribute('data-active','true');
+            //         var path = nextSong.dataset.url;
+            //         audio.innerHTML = `<source src=${path} type="audio/mpeg">`
+            //         audio.load();
+            //         audio.play();
+            //         break;
+            //     }
+            // }
+        }
+
+        // return
+        var btnPrev = $('.btn-prev')
+        btnPrev.onclick = () => {
+            var curentSong = this.getCurentSong();
+            var index = curentSong - 1
+            this.setCurentSong(index)
+            this.loadingSong()
+        }
+
+        //random
+        var songsLenght = this.songs.length
+        var ramdonmSong = Math.floor(Math.random () *songsLenght )
+        var btnRandom = $('.btn-random');
+        btnRandom.onclick = () => {
+            this.loadingSong(ramdonmSong);
+
         }
     },
     // them key cho bai hat dau tien
@@ -200,19 +248,19 @@ const app = {
     },
 
     clickBtnPlay: function() {
-        var that = this;
-        btnPlay.addEventListener('click', function() {
+        btnPlay.addEventListener('click', () => {
+            initSong = false;
             if(audio.paused) {
-                that.musicPlay(audio);
+                this.musicPlay(audio);
             } else {
-                that.musicPause(audio);
+                this.musicPause(audio);
             }   
         });
     },
     
     start: function() {
         this.render();
-        this.loadingFirstSong();
+        this.loadingSong();
         this.handleEvent();
         this.clickBtnPlay();
     }
