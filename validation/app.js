@@ -6,7 +6,7 @@ validator({
     ObjectForm: document.querySelector('#form-1'),
     rules: [
         
-        checkREgex('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/),
+        checkREgex('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,120}$/),
         checkEmpty('#fullname', '.form-message', 'vui lòng nhập trường này'),
         checkEmpty('#password_confirmation', '.form-message', 'vui lòng nhập trường này'),
         // checkPass('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/),
@@ -53,7 +53,8 @@ function checkREgex(inputElement, errorElement, message, regex ) {
             errorEl.textContent = 'vui lòng nhập trường này'
         }else {
             errorEl.textContent = '';
-            input.parentElement.classList.remove('invalid')
+            input.parentElement.classList.remove('invalid');
+            inputElement == '#password' ? checkPass(value) : undefined;
         }
     }
 
@@ -69,9 +70,20 @@ function change(inputElement, errorElement) {
         
     }
 }
-function checkPass(inputElement, errorElement, message, regex ) {
-    
+function checkPass(value) {
+    var inputElement = document.querySelector('#password_confirmation');
+    var errorElement =inputElement.parentElement.querySelector('.form-message')
+    inputElement.onblur = function() {
+    var valuePasswordConfirmation = inputElement.value
+     if(valuePasswordConfirmation == value) {
+        
+     }else{
+        errorElement.textContent = 'Mật khẩu không trùng khớp'
+        inputElement.parentElement.classList.add('invalid')
+     }
+    }
 };
+
 
 //password_confirmation
 // 1 lấy value của password với điều kiện value đúng quy định so sánh với value của password_confirmation
