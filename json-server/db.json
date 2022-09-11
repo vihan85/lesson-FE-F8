@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "name": "Mỹ phẩm: Kem dưỡng môi",
+      "description": "Mỹ phẩm dưỡng môi tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên",
+      "basicPrice": "800000",
+      "price": "400000",
+      "id": 12
+    },
+    {
+      "name": "Mỹ phẩm: Kem dưỡng môi",
+      "description": "Mỹ phẩm dưỡng môi tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên",
+      "basicPrice": "800000",
+      "price": "400000",
+      "id": 13
+    },
+    {
+      "name": "Mỹ phẩm: Kem dưỡng môi",
+      "description": "Mỹ phẩm dưỡng môi tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên Mỹ phẩm chiết xuất 100% tự nhiên",
+      "basicPrice": "800000",
+      "price": "400000",
+      "id": 14
+    },
+    {
+      "name": "KEM ĐÁNH RĂNG",
+      "id": 15
+    }
+  ]
+}
