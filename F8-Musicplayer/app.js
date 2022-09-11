@@ -31,13 +31,15 @@ const app = {
             name: 'shay nang',
             singer: 'Vicetone',
             path: './asset/music/Shay-Nanggg-AMEE-Obito.mp3',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0zANPoWHH636U0D4a6WyH5IRjBGMUjwh9yA&usqp=CAU'
+            img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
+
         },
         {
             name: 'xin mua roi',
             singer: 'Trung Quan',
             path: './asset/music/Xin-Mua-Roi-Nhanh-Trung-Quan-Idol-Hoang-Rob.mp3',
             img: 'https://i.ytimg.com/vi/SNES5Y-tYxM/maxresdefault.jpg'
+
         },
         {
             name: 'Dot Chay',
@@ -120,33 +122,6 @@ const app = {
         // thay đổi width và padding-top
         // scrolldown tăng width và padding-top 0 - 100% 
         // scrollup giảm từ 100% - 0
-        // var lastScrollTop = 0;
-        // var w = 100;
-        // console.log(cdWidth)
-        // document.onscroll = function() {
-        //     var st = window.pageYOffset || document.documentElement.scrollTop;
-           
-        //     if (st > lastScrollTop) {
-        //         // downscroll code
-        //         w = w * 2
-        //         console.log('downscroll', w);
-
-        //         w = w >= 100 ? 100 : w;
-        //         w = w;
-        //         // console.log('downscroll', w);
-        //         cd.style.width = w + "%";
-        //         cd.style.paddingTop = w + "%";
-        //      } else {
-        //         // upscroll code
-        //         w = w / 2
-        //         w = w <= 0 ? 0 : w;
-        //         w = w;
-        //         console.log('upscroll', w);
-        //         cd.style.width = w + "%";
-        //         cd.style.paddingTop = w + "%";
-        //      };
-        //      lastScrollTop = st <= 0 ? 0 : st; 
-        // }
 
         var cd = $('.cd');
         var cdWidth = cd.offsetWidth
@@ -181,6 +156,7 @@ const app = {
                 that.musicPlay(audio, duration);
             });
         }
+        // btn next
         var btnNext = $('.btn-next');
         btnNext.onclick = () => {
             var curentSong = this.getCurentSong();
@@ -188,22 +164,9 @@ const app = {
             this.setCurentSong(index)
             var newSong = this.setCurentSong(index)
             this.loadingSong(newSong)
-            // for (let i = 0; i < song.length; i++) {
-            //     var currentSong = song[i];
-            //     if(currentSong.getAttribute('data-active') == 'true') {
-            //         var nextSong = song[i + 1];
-            //         currentSong.removeAttribute('data-active');
-            //         nextSong.setAttribute('data-active','true');
-            //         var path = nextSong.dataset.url;
-            //         audio.innerHTML = `<source src=${path} type="audio/mpeg">`
-            //         audio.load();
-            //         audio.play();
-            //         break;
-            //     }
-            // }
         }
 
-        // return
+        // btn return
         var btnPrev = $('.btn-prev')
         btnPrev.onclick = () => {
             var curentSong = this.getCurentSong();
@@ -212,14 +175,41 @@ const app = {
             this.loadingSong()
         }
 
-        //random
-        var songsLenght = this.songs.length
-        var ramdonmSong = Math.floor(Math.random () *songsLenght )
-        var btnRandom = $('.btn-random');
-        btnRandom.onclick = () => {
-            this.loadingSong(ramdonmSong);
-
+        // btnrandom
+        // khi nut seek đậm là đang chế độ random click vào sẽ đổi bài ngẫu nhiên
+        // khi seek tắt chế độ bth
+        let btnRamdon = $('.btn-random');
+        
+        btnRamdon.onclick = () => {
+            let that = this;
+            let acctiveRandom = btnRamdon.classList.contains('btn-random--acctive')
+            if(!acctiveRandom) {
+                btnRamdon.classList.add('btn-random--acctive');
+                var songsLenght = this.songs.length
+                btnNext.onclick = () => {
+                    var ramdonmSong = Math.floor(Math.random () *songsLenght )
+                    that.curentSong = ramdonmSong
+                    that.loadingSong()
+                }
+                btnPrev.onclick = () => {
+                    var ramdonmSong = Math.floor(Math.random () *songsLenght )
+                    that.curentSong = ramdonmSong
+                    that.loadingSong()
+                }
+            }else {
+                console.log('test')
+                btnRamdon.classList.remove('btn-random--acctive')
+               
+            }
         }
+        // btn preload
+        let btnRepest = $('.btn-repeat')
+        btnRepest.onclick = () => {
+            audio.curentTime = 0;
+            audio.load()
+            audio.play()
+        }
+        
     },
     // them key cho bai hat dau tien
     // kiem tra the chua data neu laf true thi lay ra bai hat 
@@ -257,21 +247,29 @@ const app = {
             }   
         });
     },
+    progress: function() {
+
+        audio.ontimeupdate = function() {
+            let duration = audio.duration
+            let curentTime = audio.currentTime
+            $('.progress').setAttribute('max', duration )
+            $('.progress').setAttribute('value', curentTime )
+        };
+        $('.progress').onchange = function(e) {
+            console.log(audio.currentTime = this.value);
+        };
+    },
     
     start: function() {
         this.render();
         this.loadingSong();
         this.handleEvent();
         this.clickBtnPlay();
+        this.progress();
     }
 };
 app.start()
 
-// play music
-        // 1/ lắng nghe sự kiện click lên btn-toggle-play
-        // 2/ click vafo btnPlay thì phát nhạc
-
- 
 
 
 

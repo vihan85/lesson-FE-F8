@@ -4,10 +4,29 @@ var selectorRules = {};
 
 function validator(options) {
 
+    // get inputParent
+
+    function getParenElm (inputElement) {
+        while(inputElement) {
+            var parentElement = inputElement.parentElement
+            if(parentElement.matches('.form-group')) {
+                return parentElement
+            } else {
+                inputElement = parentElement
+            }
+        }
+        
+    }
+
     //lưu các rule
     var formElement = document.querySelector(options.form);
     function validate(inputElement, rule) {
-        var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
+        var errorElement = getParenElm(inputElement).querySelector(options.errorSelector);
+       
+        var checked = formElement.querySelector('[name]');
+    
+
+
         var errorMesg;
         // từ đây có thể lấy đc value của từng input
         // và lấy đc các func tương ứng của từng rule rule.test
@@ -16,29 +35,29 @@ function validator(options) {
         var rules = selectorRules[rule.selector]
         // lập qua từng rule và kiểm tra
         // nếu có lỗi thì dừng kiểm tra
-        for(var i = 0 ; i < rules.length; ++i ) {
+        for (var i = 0; i < rules.length; ++i) {
             errorMesg = rules[i](inputElement.value, inputElement);
-            if(errorMesg) break;
-        }
+            if (errorMesg) break;
+        };
 
-        if(errorMesg) { 
+        if (errorMesg) {
             errorElement.textContent = errorMesg;
-            inputElement.parentElement.classList.add('invalid');
-        }else{
+            getParenElm(inputElement).classList.add('invalid');
+        } else {
             errorElement.textContent = '';
-            inputElement.parentElement.classList.remove('invalid');
-        }
+            getParenElm(inputElement).classList.remove('invalid');
+        };
 
         return !errorMesg
 
     }
 
-    if(formElement) {
-        
-            // lặp qua các rule và xử lý (lắng nghe sự kiện)
-            options.rules.forEach(function(rule) {
+    if (formElement) {
+
+        // lặp qua các rule và xử lý (lắng nghe sự kiện)
+        options.rules.forEach(function (rule) {
             //lưu rule cho mỗi input
-            if(Array.isArray(selectorRules[rule.selector])) {
+            if (Array.isArray(selectorRules[rule.selector])) {
                 selectorRules[rule.selector].push(rule.test)
             } else {
                 selectorRules[rule.selector] = [rule.test];
@@ -48,16 +67,17 @@ function validator(options) {
             // ddang validate cho form nào thì đứng tại form đó lấy các selector ra để tránh nhầm với các form khác có cùng tên class
             var inputElement = formElement.querySelector(rule.selector);
             
+
             // var errorElement = inputElement.parentElement.querySelector(options.errorSelector);
             // xử lý khi blur ra ngoài
-            if(inputElement) {
-                inputElement.onblur = function(e) {
+            if (inputElement) {
+                inputElement.onblur = function (e) {
                     validate(inputElement, rule)
                 }
-            };
+            }
 
             // xử lý khi người dùng bắt đầu nhập
-            inputElement.oninput = function() {
+            inputElement.oninput = function () {
                 validate(inputElement, rule)
                 // errorElement.textContent = '';
                 // inputElement.parentElement.classList.remove('invalid');
@@ -66,38 +86,45 @@ function validator(options) {
         });
 
         // khi submit form
-        formElement.onsubmit = function(e) {
+        formElement.onsubmit = function (e) {
             e.preventDefault()
             var isFormValid = true;
             // lặp qua từng rule và validate
-            options.rules.forEach(function(rule) {
+            options.rules.forEach(function (rule) {
                 let inputElement = formElement.querySelector(rule.selector);
                 var isvalid = validate(inputElement, rule);
-                if(!isvalid) {
+                if (!isvalid) {
                     isFormValid = false;
                 }
             });
 
-            
-        
-            if(isFormValid) {
-                if(typeof options.onSubmit === 'function') {
+
+
+            if (isFormValid) {
+                if (typeof options.onSubmit === 'function') {
                     var enableInput = formElement.querySelectorAll('[name]:not([disable])')
-                    var formValues = Array.from(enableInput).reduce(function(values, input) {
-                    values[input.name] = input.value
-                    return values
+                    var formValues = Array.from(enableInput).reduce(function (values, input) {
+                        
+                        switch (input.type) {
+                            case 'radio':
+                                    values[input.name] = formElement.querySelector('input[name="' + input.name + '"]:checked').value;
+                                break
+                        default:
+                                values[input.name] = input.value
+                        }
+                        return values
                     }, {})
-                    console.log(formValues)
+                    options.onSubmit(formValues)
                 }
-            } 
-            
-            // submit với hành vi mặc định
-            else {
-                formElement.onSubmit()
-                
             }
 
-            
+            // submit với hành vi mặc định
+            else {
+                // formElement.onSubmit()
+
+            }
+
+
         }
 
     }
@@ -113,8 +140,8 @@ validator.isRequired = function (selector) {
     return {
         selector: selector,
         // funciton này thực hiện các chức năng riêng cho tuèng rule
-       
-        test: function(value) {
+
+        test: function (value) {
             return value.trim() ? undefined : "Vui lòng nhập trường này";
         }
     }
@@ -123,24 +150,24 @@ validator.isEmail = function (selector) {
     return {
         selector: selector,
         // funciton này thực hiện các chức năng riêng cho tuèng rule
-        test: function(value) {
+        test: function (value) {
             var regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-            return regex.test(value) ? undefined : 'Vui lòng nhập Email'
+            return regex.test(value) ? undefined : 'Vui lòng nhập Email';
         }
     }
 };
-validator.minLenght = function(selector, min) {
+validator.minLenght = function (selector, min) {
     return {
         selector: selector,
-        test: function(value) {
+        test: function (value) {
             return value.length >= min ? undefined : 'Vui lòng nhập ít nhất 6 ký tự'
         }
     }
 };
-validator.matchPass = function(selector, getPass) {
+validator.matchPass = function (selector, getPass) {
     return {
         selector: selector,
-        test: function(value) {
+        test: function (value) {
             return value === getPass() ? undefined : 'Vui lòng nhập lại pass'
         }
     }
@@ -171,8 +198,9 @@ validator({
         validator.matchPass('#password_confirmation', function getPass() {
             return document.querySelector('#password').value;
         }),
+        validator.isRequired('#gender')
     ],
-    onSubmit : function(data) {
+    onSubmit: function (data) {
         console.log(data)
     }
 });

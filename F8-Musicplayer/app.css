@@ -98,6 +98,10 @@
     font-size: 18px;
   }
   
+  .control .btn-random--acctive{
+    color: purple;
+  }
+  
   .control .btn.active {
     color: var(--primary-color);
   }

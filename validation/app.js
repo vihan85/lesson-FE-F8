@@ -5,19 +5,14 @@ function validator(options) {
 validator({
     ObjectForm: document.querySelector('#form-1'),
     rules: [
-        
-        checkREgex('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,120}$/),
         checkEmpty('#fullname', '.form-message', 'vui lòng nhập trường này'),
         checkEmpty('#password_confirmation', '.form-message', 'vui lòng nhập trường này'),
-        // checkPass('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/),
+        checkREgex('#password', '.form-message', 'Password chứa ít nhất 5 ký tự và chứa một ký tự đặc biệt',/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,120}$/),
         checkREgex('#email', '.form-message', 'vui lòng nhập lại email',/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/),
         change('#fullname','.form-message'),
         change('#password', '.form-message'),
         change('#email', '.form-message'),
         change('#password_confirmation', '.form-message'),
-
-
-
     ]
 });
 function checkEmpty(inputElement, errorElement, message ) {
@@ -38,6 +33,7 @@ function checkEmpty(inputElement, errorElement, message ) {
 //check regex mail add pass
 //1. có ít nhất 5 ký tự và chứa ít nhất 1 ký tự đặc biệt
 //2 dài nhất 250 ký tự
+
 function checkREgex(inputElement, errorElement, message, regex ) {
     let input = document.querySelector(inputElement);
     input.onblur = function(e) {
@@ -52,24 +48,13 @@ function checkREgex(inputElement, errorElement, message, regex ) {
             input.parentElement.classList.add('invalid');
             errorEl.textContent = 'vui lòng nhập trường này'
         }else {
+            pass = value
             errorEl.textContent = '';
             input.parentElement.classList.remove('invalid');
             inputElement == '#password' ? checkPass(value) : undefined;
         }
     }
-
 };
-function change(inputElement, errorElement) {
-    var input = document.querySelector(inputElement)
-    input.onfocus =function() {
-        let errorEl = input.parentElement.querySelector(errorElement)
-        if(input.parentElement.classList.contains('invalid')) {
-            input.parentElement.classList.remove('invalid');
-            errorEl.textContent = '';
-        }
-        
-    }
-}
 function checkPass(value) {
     var inputElement = document.querySelector('#password_confirmation');
     var errorElement =inputElement.parentElement.querySelector('.form-message')
@@ -83,6 +68,17 @@ function checkPass(value) {
      }
     }
 };
+function change(inputElement, errorElement) {
+    var input = document.querySelector(inputElement)
+    input.onfocus =function() {
+        let errorEl = input.parentElement.querySelector(errorElement)
+        if(input.parentElement.classList.contains('invalid')) {
+            input.parentElement.classList.remove('invalid');
+            errorEl.textContent = '';
+        }
+        
+    }
+}
 
 
 //password_confirmation
